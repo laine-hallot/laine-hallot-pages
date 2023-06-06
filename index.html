@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link href="./styles.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+  </head>
+  <body class="font-mono dark:text-slate-50">
+    <div
+      class="w-screen h-screen overflow-scroll bg-slate-50 dark:bg-gray-950"
+      x-data="{scrollToFirst: ()=> {
+        const firstSection = document.getElementById('first');
+        firstSection
+      }}"
+      x-on:scroll="function(){console.log($event)}()"
+    >
+      <div class="w-full h-full flex flex-col justify-center">
+        <div class="sticky w-1/3 p-6 mx-auto flex">
+          <img
+            src="https://avatars.githubusercontent.com/u/16855412?v=4"
+            class="rounded-full h-56 w-56 hidden sm:block"
+          />
+          <div class="h-full p-4 flex flex-col items-center">
+            <h1 class="text-2xl font-mono dark:text-slate-50">Laine Hallot</h1>
+            <span>full stack developer</span>
+            <a class="underline text-lg">my resume</a>
+          </div>
+        </div>
+        <div class="w-96 p-6 mx-auto text-center">
+          <a
+            class="animate animate-bounce underline decoration-dashed"
+            href="#first"
+            >More ↓</a
+          >
+        </div>
+      </div>
+      <div class="w-full sm:pl-96 pr-48">
+        <div class="" id="first">
+          <div class=""><span></span></div>
+          <div>
+            <span class="text-2xl">Test article</span>
+          </div>
+          <div>
+            <p>
+              Esse magna minim proident pariatur. Aliqua exercitation id culpa
+              eiusmod. Deserunt pariatur ea laboris voluptate tempor ipsum
+              adipisicing proident Lorem cupidatat occaecat. Amet laboris amet
+              aliquip eiusmod sunt nisi tempor. Eu in enim est mollit cillum
+              dolore consectetur eiusmod deserunt culpa veniam. Excepteur do
+              eiusmod est est dolor sint do. Sit dolor excepteur nostrud dolor
+              nisi et aute voluptate proident culpa quis deserunt consectetur.
+              Est occaecat proident dolore voluptate cupidatat dolor eu in enim
+              tempor quis. Lorem cupidatat tempor aute reprehenderit sint
+              reprehenderit ut. Do exercitation fugiat id nisi quis ullamco eu
+              cillum in cillum qui do aliqua.
+            </p>
+            <p class="underline decoration-dashed">more</p>
+          </div>
+        </div>
+        <div class="">
+          <div>
+            <span class="text-6xl">Test article</span>
+          </div>
+          <div>
+            <p>
+              Esse magna minim proident pariatur. Aliqua exercitation id culpa
+              eiusmod. Deserunt pariatur ea laboris voluptate tempor ipsum
+              adipisicing proident Lorem cupidatat occaecat. Amet laboris amet
+              aliquip eiusmod sunt nisi tempor. Eu in enim est mollit cillum
+              dolore consectetur eiusmod deserunt culpa veniam. Excepteur do
+              eiusmod est est dolor sint do. Sit dolor excepteur nostrud dolor
+              nisi et aute voluptate proident culpa quis deserunt consectetur.
+              Est occaecat proident dolore voluptate cupidatat dolor eu in enim
+              tempor quis. Lorem cupidatat tempor aute reprehenderit sint
+              reprehenderit ut. Do exercitation fugiat id nisi quis ullamco eu
+              cillum in cillum qui do aliqua.
+            </p>
+            <p class="underline decoration-dashed">more</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

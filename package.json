@@ -1,0 +1,20 @@
+{
+  "name": "laine-pages",
+  "version": "1.0.0",
+  "description": "personal gh page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "postcss -o styles.css src/styles/*.css"
+  },
+  "author": "Laine Hallot",
+  "license": "ISC",
+  "dependencies": {
+    "postcss-cli": "^10.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.24",
+    "tailwindcss": "^3.3.2"
+  }
+}
