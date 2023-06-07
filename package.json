@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "postcss -o styles.css src/styles/*.css"
+    "build": "postcss -o styles.css src/styles/*.css",
+    "build:watch": "postcss --watch -o styles.css src/styles/*.css"
   },
   "author": "Laine Hallot",
   "license": "ISC",
