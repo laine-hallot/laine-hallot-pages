@@ -45,134 +45,55 @@
             <h2 class="text-4xl mb-8">My work experience</h2>
           </div>
           <div class="flex flex-col gap-10">
-            <div class="">
-              <div class="">
-                <div class="flex justify-between">
-                  <h3 class="text-2xl">Software Developer II</h3>
-                  <span class="text-lg leading-8"
-                    >September 2021 - April 2023</span
-                  >
-                </div>
-                <span class="text-lg">Branding Brand</span>
-              </div>
-              <div class="pl-6 mt-2">
-                <ul class="list-disc">
-                  <li>Used React to create SaaS CMS software.</li>
-                  <li>
-                    Worked on Branding Brand's Flagship framework for Mobile
-                    apps in React Native.
-                  </li>
-                  <li>Developed ecommerce mobile apps using React Native.</li>
-                  <li>
-                    Worked closely with the design team to translate figma
-                    documents into actual UIs.
-                  </li>
-                  <li>Developed SPAs with React.</li>
-                  <li>
-                    Supported other teams in the company to help deliver apps
-                    for large retailers by fulfilling feature requests and
-                    helping them integrate their app code with our CMS software
-                    and its proprietary libraries.
-                  </li>
-                  <li>
-                    I did frontend development on marketing segmentation
-                    software that delivered content to millions of unique users
-                    per day.
-                  </li>
-                </ul>
-              </div>
-            </div>
+            @!component('job',{
+              title: "Software Developer II",
+              duration: "September 2021 - April 2023",
+              company: "Branding Brand",
+              bulletPoints: [
+                "Used React to create SaaS CMS software.",
+                "Worked on Branding Brand's Flagship framework for Mobile apps in React Native.",
+                "Developed ecommerce mobile apps using React Native.",
+                "Worked closely with the design team to translate figma documents into actual UIs.",
+                "Developed SPAs with React.",
+                "Supported other teams in the company to help deliver apps for large retailers by fulfilling feature requests and helping them integrate their app code with our CMS software and its proprietary libraries.",
+                "I did frontend development on marketing segmentation software that delivered content to millions of unique users per day"
+              ]
+            })
+            @!component('job',{
+              title: "Fullstack Web Developer",
+              duration: "January 2020 to June 2021",
+              company: "Simple Solutions FS",
+              bulletPoints: [
+                "Worked on a variety of projects and had responsibilities in all aspects of the software stack.",
+                "Developed plugins and themes for CMSs like Wordpress andMagento",
+                "Did backend programming with Laravel and NodeJs frameworkslike AdonisJS.",
+                "I did Frontend work with React, jQuery+Bootstrap, orAlpineJS+Tailwind.",
+                "I took over development for old codebases, updating theircode, fixing bugs, and adding new features.",
+                "I did mobile app development with native JS frameworks likeIonic and React.",
+                "Responsible for setting up production environments anddeploying apps with Docker."
+              ]
+            })
+            @!component('job',{
+              title: "Frontend Web Development Intern",
+              duration: "July 2017 - August 2017",
+              company: "Valtech NYC",
+              bulletPoints: [
+                "Did the frontend development for an in-store customer engagement tracker using D3 and Semantic UI.",
+                "Worked on a messaging app for Android and iPhone using React Native and Firebase.",
+                "Implemented UI designs from wireframes and .psd mock ups."
+              ]
+            })
+            @!component('job',{
+              title: "Programming and STEM Tutor",
+              duration: "May 2019 - February 2020",
+              company: "Zaniac South Miami",
+              bulletPoints: [
+                "Taught programming and science to k-8th students.",
+                "Tailored lessons to the students level and needs.",
+                "I wrote lesson plans that helped kids learn about programming in engaging ways."
+              ]
+            })
 
-            <div class="">
-              <div class="">
-                <div class="flex justify-between">
-                  <h3 class="text-2xl">Fullstack Web Developer</h3>
-                  <span class="text-lg leading-8"
-                    >January 2020 to June 2021
-                  </span>
-                </div>
-                <span class="text-lg">Simple Solutions FS</span>
-              </div>
-              <div class="pl-6 mt-2">
-                <ul class="list-disc">
-                  <li>
-                    Worked on a variety of projects and had responsibilities in
-                    all aspects of the software stack.
-                  </li>
-                  <li>
-                    Developed plugins and themes for CMSs like Wordpress and
-                    Magento
-                  </li>
-                  <li>
-                    Did backend programming with Laravel and NodeJs frameworks
-                    like AdonisJS.
-                  </li>
-                  <li>
-                    I did Frontend work with React, jQuery+Bootstrap, or
-                    AlpineJS+Tailwind.
-                  </li>
-                  <li>
-                    I took over development for old codebases, updating their
-                    code, fixing bugs, and adding new features.
-                  </li>
-                  <li>
-                    I did mobile app development with native JS frameworks like
-                    Ionic and React.
-                  </li>
-                  <li>
-                    Responsible for setting up production environments and
-                    deploying apps with Docker.
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="">
-              <div class="">
-                <div class="flex justify-between">
-                  <h3 class="text-2xl">Frontend Web Development Intern</h3>
-                  <span class="text-lg leading-8">July 2017 - August 2017</span>
-                </div>
-                <span class="text-lg">Valtech NYC</span>
-              </div>
-              <div class="pl-6 mt-2">
-                <ul class="list-disc">
-                  <li>
-                    Did the frontend development for an in-store customer
-                    engagement tracker using D3 and Semantic UI.
-                  </li>
-                  <li>
-                    Worked on a messaging app for Android and iPhone using React
-                    Native and Firebase.
-                  </li>
-                  <li>
-                    Implemented UI designs from wireframes and .psd mock ups.
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="">
-              <div class="">
-                <div class="flex justify-between">
-                  <h3 class="text-2xl">Programming and STEM Tutor</h3>
-                  <span class="text-lg leading-8"
-                    >May 2019 - February 2020</span
-                  >
-                </div>
-                <span class="text-lg">Zaniac South Miami</span>
-              </div>
-              <div class="pl-6 mt-2">
-                <ul class="list-disc">
-                  <li>Taught programming and science to k-8th students</li>
-                  <li>Tailored lessons to the students level and needs.</li>
-                  <li>
-                    I wrote lesson plans that helped kids learn about
-                    programming in engaging ways.
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
         <div class="projects">
@@ -180,77 +101,39 @@
             <h2 class="text-4xl mb-8">My work experience</h2>
           </div>
           <div class="flex flex-col gap-10">
-            <div x-data="article">
-              <div>
-                <h3 class="text-2xl">Tiktok Curl</h3>
-              </div>
-              <div>
-                <div
-                  class="transition-all duration-300 overflow-hidden"
-                  x-bind:class="{'h-48': !expanded}"
-                  x-bind:style="{height: articleBodyScrollHeight}"
-                  x-ref="articleBody">
-                  <p>
-                    Deserunt incididunt sunt consequat incididunt exercitation
-                    eiusmod. Dolore voluptate magna ex elit Lorem. Nostrud enim
-                    amet velit laborum Lorem aliqua. Elit sunt adipisicing id
-                    nostrud in cupidatat id sint voluptate quis consequat
-                    officia ipsum. Officia enim elit minim amet eiusmod velit
-                    incididunt eu eu ea.
-                  </p>
-                  <p>
-                    Deserunt incididunt sunt consequat incididunt exercitation
-                    eiusmod. Dolore voluptate magna ex elit Lorem. Nostrud enim
-                    amet velit laborum Lorem aliqua. Elit sunt adipisicing id
-                    nostrud in cupidatat id sint voluptate quis consequat
-                    officia ipsum. Officia enim elit minim amet eiusmod velit
-                    incididunt eu eu ea. Anim mollit id minim elit qui eu
-                    velit.Deserunt incididunt sunt consequat incididunt
-                    exercitation eiusmod. Dolore voluptate magna ex elit Lorem.
-                    Nostrud enim amet velit laborum Lorem aliqua. Elit sunt
-                    adipisicing id nostrud in cupidatat id sint voluptate quis
-                    consequat officia ipsum. Officia enim elit minim amet
-                    eiusmod velit incididunt eu eu ea. Anim mollit id minim elit
-                    qui eu velit.Deserunt incididunt sunt consequat incididunt
-                    exercitation eiusmod. Dolore voluptate magna ex elit Lorem.
-                    Nostrud enim amet velit laborum Lorem aliqua. Elit sunt
-                    adipisicing id nostrud in cupidatat id sint voluptate quis
-                    consequat officia ipsum. Officia enim elit minim amet
-                    eiusmod velit incididunt eu eu ea. Anim mollit id minim elit
-                    qui eu velit.Deserunt incididunt sunt consequat incididunt
-                    exercitation eiusmod. Dolore voluptate magna ex elit Lorem.
-                    Nostrud enim amet velit laborum Lorem aliqua. Elit sunt
-                    adipisicing id nostrud in cupidatat id sint voluptate quis
-                    consequat officia ipsum. Officia enim elit minim amet
-                    eiusmod velit incididunt eu eu ea. Anim mollit id minim elit
-                    qui eu velit.Deserunt incididunt sunt consequat incididunt
-                    exercitation eiusmod. Dolore voluptate magna ex elit Lorem.
-                    Nostrud enim amet velit laborum Lorem aliqua. Elit sunt
-                    adipisicing id nostrud in cupidatat id sint voluptate quis
-                    consequat officia ipsum. Officia enim elit minim amet
-                    eiusmod velit incididunt eu eu ea. Anim mollit id minim elit
-                    qui eu velit.
-                  </p>
-                </div>
-              </div>
-              <div class="from-transparent to-slate-950">
-                <button class="w-full relative text-left" x-on:click="toggle">
-                  <span
-                    class="aboslute underline decoration-dashed"
-                    x-show="!expanded"
-                    x-transition
-                    >more</span
-                  >
-                  <span
-                    class="hidden aboslute underline decoration-dashed"
-                    x-show="expanded"
-                    x-bind:class="{'important-block': expanded}"
-                    x-transition
-                    >less</span
-                  >
-                </button>
-              </div>
-            </div>
+            @!component('article', {
+              text: `Deserunt incididunt sunt consequat incididunt exercitation
+        eiusmod. Dolore voluptate magna ex elit Lorem. Nostrud enim
+        amet velit laborum Lorem aliqua. Elit sunt adipisicing id
+        nostrud in cupidatat id sint voluptate quis consequat
+        officia ipsum. Officia enim elit minim amet eiusmod velit
+        incididunt eu eu ea. Anim mollit id minim elit qui eu
+        velit.Deserunt incididunt sunt consequat incididunt
+        exercitation eiusmod. Dolore voluptate magna ex elit Lorem.
+        Nostrud enim amet velit laborum Lorem aliqua. Elit sunt
+        adipisicing id nostrud in cupidatat id sint voluptate quis
+        consequat officia ipsum. Officia enim elit minim amet
+        eiusmod velit incididunt eu eu ea. Anim mollit id minim elit
+        qui eu velit.Deserunt incididunt sunt consequat incididunt
+        exercitation eiusmod. Dolore voluptate magna ex elit Lorem.
+        Nostrud enim amet velit laborum Lorem aliqua. Elit sunt
+        adipisicing id nostrud in cupidatat id sint voluptate quis
+        consequat officia ipsum. Officia enim elit minim amet
+        eiusmod velit incididunt eu eu ea. Anim mollit id minim elit
+        qui eu velit.Deserunt incididunt sunt consequat incididunt
+        exercitation eiusmod. Dolore voluptate magna ex elit Lorem.
+        Nostrud enim amet velit laborum Lorem aliqua. Elit sunt
+        adipisicing id nostrud in cupidatat id sint voluptate quis
+        consequat officia ipsum. Officia enim elit minim amet
+        eiusmod velit incididunt eu eu ea. Anim mollit id minim elit
+        qui eu velit.Deserunt incididunt sunt consequat incididunt
+        exercitation eiusmod. Dolore voluptate magna ex elit Lorem.
+        Nostrud enim amet velit laborum Lorem aliqua. Elit sunt
+        adipisicing id nostrud in cupidatat id sint voluptate quis
+        consequat officia ipsum. Officia enim elit minim amet
+        eiusmod velit incididunt eu eu ea. Anim mollit id minim elit
+        qui eu velit.`,
+            })            
           </div>
         </div>
         <div class="h-32"></div>

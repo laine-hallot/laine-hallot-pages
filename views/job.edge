@@ -1,0 +1,19 @@
+<div class="">
+  <div class="">
+    <div class="flex justify-between">
+      <h3 class="text-2xl">{{title}}</h3>
+      <span class="text-lg leading-8"
+        >{{duration}}</span
+      >
+    </div>
+    <span class="text-lg">{{company}}</span>
+  </div>
+  <div class="pl-6 mt-2">
+    <ul class="list-disc">
+
+      @each(line in bulletPoints)
+        <li>{{line}}</li>
+      @end
+    </ul>
+  </div>
+</div>

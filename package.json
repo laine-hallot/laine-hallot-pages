@@ -6,11 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "postcss -o styles.css src/styles/*.css",
-    "build:watch": "postcss --watch -o styles.css src/styles/*.css"
+    "build:watch:css": "postcss --watch -o styles.css src/styles/*.css",
+    "dev": "./watch.sh views/ build-html.js"
   },
   "author": "Laine Hallot",
   "license": "ISC",
   "dependencies": {
+    "edge.js": "^5.5.1",
     "postcss-cli": "^10.1.0"
   },
   "devDependencies": {
