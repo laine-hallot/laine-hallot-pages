@@ -2,6 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --icon-link: '';
+}
+
 .important-block {
   display: block !important;
+}
+
+.gh-icon {
+  --icon-link: url('assets/iconmonstr-github-1.svg');
+}
+
+.li-icon {
+  --icon-link: url('assets/iconmonstr-linkedin-1.svg');
+}
+
+.icon {
+  mask-image: var(--icon-link);
+  mask-size: 22px;
+  mask-repeat: no-repeat;
+  mask-position: center;
+
+  background: white;
+  width: 24px;
+  height: 24px;
 }

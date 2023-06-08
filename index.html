@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="./styles.css" rel="stylesheet" />
+    <script src="./script.js"></script>
+    <title>Laine Hallot - Site</title>
+  </head>
+  <body class="font-mono dark:text-slate-50">
+    <div
+      class="w-screen h-screen overflow-scroll bg-slate-50 dark:bg-gray-950"
+      x-data="page"
+      x-on:scroll="handleScroll">
+      <div class="w-full h-full flex flex-col justify-center" x-ref="header">
+        <div
+        class="p-6 mx-auto flex"
+        x-bind:style="{opacity: percentageOfHeaderRemaining, transform:headerTransformString}"
+        >
+          <img
+            src="https://avatars.githubusercontent.com/u/16855412?v=4"
+            class="rounded-full h-56 w-56 hidden md:block" />
+          <div
+            class="h-full p-4 flex flex-col items-center md:w-96 justify-center relative">
+            <div class="flex absolute md:top-4 md:right-4 -bottom-6 md:bottom-auto gap-2">
+              <a href="https://github.com/laine-hallot">
+                <img atl="my github" class="icon gh-icon" />
+              </a>
+              <a href="https://www.linkedin.com/in/laine-h-358717130/">
+                <img atl="my linkedin" class="icon li-icon" />
+              </a>
+            </div>
+            <h1 class="text-2xl font-mono dark:text-slate-50">Laine Hallot</h1>
+            <span>full stack developer</span>
+            <a class="underline decoration-dashed text-lg" download="" href="./"
+              >My resume</a
+            >
+          </div>
+        </div>
+        <div class="w-96 p-6 mx-auto text-center" x-bind:style="{opacity: percentageOfHeaderRemaining}">
+          <a
+            class="animate animate-bounce underline decoration-dashed"
+            href="#employment"
+            x-on:click="scrollToFirst"
+            >More ↓
+          </a>
+          
+        </div>
+      </div>
+      <div 
+      class="absolute p-6 mx-auto hidden md:flex top-0 items-center"
+      x-bind:style="{opacity: percentageOfHeaderNotOnScreenString, transform:headerTransformString}"
+      >
+        <img
+          src="https://avatars.githubusercontent.com/u/16855412?v=4"
+          class="rounded-full h-24 w-24 hidden md:block"  />
+        <div
+          class="h-full p-4 flex flex-col items-start justify-center relative">
+          <div class="flex absolute bottom-4 right-4 gap-2">
+            <a href="https://github.com/laine-hallot">
+              <img atl="my github" class="icon gh-icon" />
+            </a>
+            <a href="https://www.linkedin.com/in/laine-h-358717130/">
+              <img atl="my linkedin" class="icon li-icon" />
+            </a>
+          </div>
+          <h1 class="text-lg font-mono dark:text-slate-50">Laine Hallot</h1>
+          <span>full stack developer</span>
+          <a class="underline decoration-dashed text-lg" download="" href="./">
+            My resume
+          </a>
+          <a class="underline decoration-dashed text-lg" href="#employment">
+            Employment
+          </a>
+          <a class="underline decoration-dashed text-lg" href="#projects">
+            Projects
+          </a>
+        </div>
+      </div>
+      <div
+        class="w-full p-12 md:pl-96 md:pr-48 pt-16 flex flex-col gap-12 min-h-screen">
+        <div id="employment">
+          <div>
+            <h2 class="text-4xl mb-8">My work experience</h2>
+          </div>
+          <div class="flex flex-col gap-10"><div class="">
+  <div class="">
+    <div class="flex justify-between">
+      <h3 class="text-2xl">Software Developer II</h3>
+      <span class="text-lg leading-8"
+        >September 2021 - April 2023</span
+      >
+    </div>
+    <span class="text-lg">Branding Brand</span>
+  </div>
+  <div class="pl-6 mt-2">
+    <ul class="list-disc">
+
+        <li>Used React to create SaaS CMS software.</li>
+        <li>Worked on Branding Brand&#x27;s Flagship framework for Mobile apps in React Native.</li>
+        <li>Developed ecommerce mobile apps using React Native.</li>
+        <li>Worked closely with the design team to translate figma documents into actual UIs.</li>
+        <li>Developed SPAs with React.</li>
+        <li>Supported other teams in the company to help deliver apps for large retailers by fulfilling feature requests and helping them integrate their app code with our CMS software and its proprietary libraries.</li>
+        <li>I did frontend development on marketing segmentation software that delivered content to millions of unique users per day</li>
+    </ul>
+  </div>
+</div>
+<div class="">
+  <div class="">
+    <div class="flex justify-between">
+      <h3 class="text-2xl">Fullstack Web Developer</h3>
+      <span class="text-lg leading-8"
+        >January 2020 to June 2021</span
+      >
+    </div>
+    <span class="text-lg">Simple Solutions FS</span>
+  </div>
+  <div class="pl-6 mt-2">
+    <ul class="list-disc">
+
+        <li>Worked on a variety of projects and had responsibilities in all aspects of the software stack.</li>
+        <li>Developed plugins and themes for CMSs like Wordpress andMagento</li>
+        <li>Did backend programming with Laravel and NodeJs frameworkslike AdonisJS.</li>
+        <li>I did Frontend work with React, jQuery+Bootstrap, orAlpineJS+Tailwind.</li>
+        <li>I took over development for old codebases, updating theircode, fixing bugs, and adding new features.</li>
+        <li>I did mobile app development with native JS frameworks likeIonic and React.</li>
+        <li>Responsible for setting up production environments anddeploying apps with Docker.</li>
+    </ul>
+  </div>
+</div>
+<div class="">
+  <div class="">
+    <div class="flex justify-between">
+      <h3 class="text-2xl">Frontend Web Development Intern</h3>
+      <span class="text-lg leading-8"
+        >July 2017 - August 2017</span
+      >
+    </div>
+    <span class="text-lg">Valtech NYC</span>
+  </div>
+  <div class="pl-6 mt-2">
+    <ul class="list-disc">
+
+        <li>Did the frontend development for an in-store customer engagement tracker using D3 and Semantic UI.</li>
+        <li>Worked on a messaging app for Android and iPhone using React Native and Firebase.</li>
+        <li>Implemented UI designs from wireframes and .psd mock ups.</li>
+    </ul>
+  </div>
+</div>
+<div class="">
+  <div class="">
+    <div class="flex justify-between">
+      <h3 class="text-2xl">Programming and STEM Tutor</h3>
+      <span class="text-lg leading-8"
+        >May 2019 - February 2020</span
+      >
+    </div>
+    <span class="text-lg">Zaniac South Miami</span>
+  </div>
+  <div class="pl-6 mt-2">
+    <ul class="list-disc">
+
+        <li>Taught programming and science to k-8th students.</li>
+        <li>Tailored lessons to the students level and needs.</li>
+        <li>I wrote lesson plans that helped kids learn about programming in engaging ways.</li>
+    </ul>
+  </div>
+</div>
+
+          </div>
+        </div>
+        <div class="projects">
+          <div>
+            <h2 class="text-4xl mb-8">Stuff I've worked on</h2>
+          </div>
+          <div class="flex flex-col gap-10"><div x-data="article">
+  <div>
+    <h3 class="text-2xl">Tiktok Curl</h3>
+  </div>
+  <div>
+    <div
+      class="transition-all duration-300 overflow-hidden"
+      x-bind:class="{'h-52': !expanded}"
+      x-bind:style="{height: articleBodyScrollHeight}"
+      x-ref="articleBody">
+      <p>
+                        <p> 
+                  TikTok Curl (named after the unix utility curl) is an Ios and Android app 
+                  that lets users download a video from tiktok with or with out a watermarker.
+                  I mostly just wrote it because the usual app I used to download Tiktok Videos on my 
+                  phone had a ton of annoying fullscreen ads, so thought it might be nice to have an 
+                  opensource app that doesn't have any ads. 
+                  It's built with React Native and Typescript.
+                </p>
+                <span class="leading-xl">See the code on github: <a href="https://github.com/laine-hallot/tiktok-curl"=>https://github.com/laine-hallot/tiktok-curl</a></span><div class="flex overflow-x-scroll gap-4 mt-12">
+  <img class="w-11/12 md:w-1/2" src="assets/Screenshot_1686260557.png"/>
+  <img class="w-11/12 md:w-1/2" src="/assets/full-download.gif"/>
+</div>
+      </p>
+    </div>
+  </div>
+  <div class="from-transparent to-slate-950 bg-gradient-to-b pt-6 -mt-6">
+    <button class="w-full relative text-left" x-on:click="toggle">
+      <span
+        class="aboslute underline decoration-dashed"
+        x-show="!expanded"
+        x-transition
+        >more</span
+      >
+      <span
+        class="hidden aboslute underline decoration-dashed"
+        x-show="expanded"
+        x-bind:class="{'important-block': expanded}"
+        x-transition
+        >less</span
+      >
+    </button>
+  </div>
+</div>
+          </div>
+        </div>
+        <div class="h-32"></div>
+      </div>
+    </div>
+  </body>
+</html>

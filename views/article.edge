@@ -5,15 +5,15 @@
   <div>
     <div
       class="transition-all duration-300 overflow-hidden"
-      x-bind:class="{'h-48': !expanded}"
+      x-bind:class="{'h-52': !expanded}"
       x-bind:style="{height: articleBodyScrollHeight}"
       x-ref="articleBody">
       <p>
-        {{text}}
+        {{{ await $slots.body() }}}
       </p>
     </div>
   </div>
-  <div class="from-transparent to-slate-950">
+  <div class="from-transparent to-slate-950 bg-gradient-to-b pt-6 -mt-6">
     <button class="w-full relative text-left" x-on:click="toggle">
       <span
         class="aboslute underline decoration-dashed"

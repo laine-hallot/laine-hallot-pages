@@ -20,9 +20,10 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build --if-present
+      - run: node ./build-html.js
       - name: Copying build outputs
         shell: sh
-        run: 'mkdir -p _site/; cp index.html _site/; cp styles.css _site/; cp script.js _site/'
+        run: 'mkdir -p _site/; cp index.html _site/; cp styles.css _site/; cp script.js _site/; cp -r assets/ _site/'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:

@@ -16,13 +16,24 @@
       class="w-screen h-screen overflow-scroll bg-slate-50 dark:bg-gray-950"
       x-data="page"
       x-on:scroll="handleScroll">
-      <div class="w-full h-full flex flex-col justify-center">
-        <div class="sticky p-6 mx-auto flex">
+      <div class="w-full h-full flex flex-col justify-center" x-ref="header">
+        <div
+        class="p-6 mx-auto flex"
+        x-bind:style="{opacity: percentageOfHeaderRemaining, transform:headerTransformString}"
+        >
           <img
             src="https://avatars.githubusercontent.com/u/16855412?v=4"
-            class="rounded-full h-56 w-56 hidden sm:block" />
+            class="rounded-full h-56 w-56 hidden md:block" />
           <div
-            class="h-full p-4 flex flex-col items-center w-96 justify-center">
+            class="h-full p-4 flex flex-col items-center md:w-96 justify-center relative">
+            <div class="flex absolute md:top-4 md:right-4 -bottom-6 md:bottom-auto gap-2">
+              <a href="https://github.com/laine-hallot">
+                <img atl="my github" class="icon gh-icon" />
+              </a>
+              <a href="https://www.linkedin.com/in/laine-h-358717130/">
+                <img atl="my linkedin" class="icon li-icon" />
+              </a>
+            </div>
             <h1 class="text-2xl font-mono dark:text-slate-50">Laine Hallot</h1>
             <span>full stack developer</span>
             <a class="underline decoration-dashed text-lg" download="" href="./"
@@ -30,17 +41,49 @@
             >
           </div>
         </div>
-        <div class="w-96 p-6 mx-auto text-center">
+        <div class="w-96 p-6 mx-auto text-center" x-bind:style="{opacity: percentageOfHeaderRemaining}">
           <a
             class="animate animate-bounce underline decoration-dashed"
-            href="#first"
+            href="#employment"
+            x-on:click="scrollToFirst"
             >More ↓
+          </a>
+          
+        </div>
+      </div>
+      <div 
+      class="absolute p-6 mx-auto hidden md:flex top-0 items-center"
+      x-bind:style="{opacity: percentageOfHeaderNotOnScreenString, transform:headerTransformString}"
+      >
+        <img
+          src="https://avatars.githubusercontent.com/u/16855412?v=4"
+          class="rounded-full h-24 w-24 hidden md:block"  />
+        <div
+          class="h-full p-4 flex flex-col items-start justify-center relative">
+          <div class="flex absolute bottom-4 right-4 gap-2">
+            <a href="https://github.com/laine-hallot">
+              <img atl="my github" class="icon gh-icon" />
+            </a>
+            <a href="https://www.linkedin.com/in/laine-h-358717130/">
+              <img atl="my linkedin" class="icon li-icon" />
+            </a>
+          </div>
+          <h1 class="text-lg font-mono dark:text-slate-50">Laine Hallot</h1>
+          <span>full stack developer</span>
+          <a class="underline decoration-dashed text-lg" download="" href="./">
+            My resume
+          </a>
+          <a class="underline decoration-dashed text-lg" href="#employment">
+            Employment
+          </a>
+          <a class="underline decoration-dashed text-lg" href="#projects">
+            Projects
           </a>
         </div>
       </div>
       <div
-        class="w-full sm:pl-96 pr-48 pt-16 flex flex-col gap-12 min-h-screen">
-        <div id="first">
+        class="w-full p-12 md:pl-96 md:pr-48 pt-16 flex flex-col gap-12 min-h-screen">
+        <div id="employment">
           <div>
             <h2 class="text-4xl mb-8">My work experience</h2>
           </div>
@@ -98,42 +141,27 @@
         </div>
         <div class="projects">
           <div>
-            <h2 class="text-4xl mb-8">My work experience</h2>
+            <h2 class="text-4xl mb-8">Stuff I've worked on</h2>
           </div>
           <div class="flex flex-col gap-10">
-            @!component('article', {
-              text: `Deserunt incididunt sunt consequat incididunt exercitation
-        eiusmod. Dolore voluptate magna ex elit Lorem. Nostrud enim
-        amet velit laborum Lorem aliqua. Elit sunt adipisicing id
-        nostrud in cupidatat id sint voluptate quis consequat
-        officia ipsum. Officia enim elit minim amet eiusmod velit
-        incididunt eu eu ea. Anim mollit id minim elit qui eu
-        velit.Deserunt incididunt sunt consequat incididunt
-        exercitation eiusmod. Dolore voluptate magna ex elit Lorem.
-        Nostrud enim amet velit laborum Lorem aliqua. Elit sunt
-        adipisicing id nostrud in cupidatat id sint voluptate quis
-        consequat officia ipsum. Officia enim elit minim amet
-        eiusmod velit incididunt eu eu ea. Anim mollit id minim elit
-        qui eu velit.Deserunt incididunt sunt consequat incididunt
-        exercitation eiusmod. Dolore voluptate magna ex elit Lorem.
-        Nostrud enim amet velit laborum Lorem aliqua. Elit sunt
-        adipisicing id nostrud in cupidatat id sint voluptate quis
-        consequat officia ipsum. Officia enim elit minim amet
-        eiusmod velit incididunt eu eu ea. Anim mollit id minim elit
-        qui eu velit.Deserunt incididunt sunt consequat incididunt
-        exercitation eiusmod. Dolore voluptate magna ex elit Lorem.
-        Nostrud enim amet velit laborum Lorem aliqua. Elit sunt
-        adipisicing id nostrud in cupidatat id sint voluptate quis
-        consequat officia ipsum. Officia enim elit minim amet
-        eiusmod velit incididunt eu eu ea. Anim mollit id minim elit
-        qui eu velit.Deserunt incididunt sunt consequat incididunt
-        exercitation eiusmod. Dolore voluptate magna ex elit Lorem.
-        Nostrud enim amet velit laborum Lorem aliqua. Elit sunt
-        adipisicing id nostrud in cupidatat id sint voluptate quis
-        consequat officia ipsum. Officia enim elit minim amet
-        eiusmod velit incididunt eu eu ea. Anim mollit id minim elit
-        qui eu velit.`,
-            })            
+            @component('article')
+              @slot('body')
+                <p> 
+                  TikTok Curl (named after the unix utility curl) is an Ios and Android app 
+                  that lets users download a video from tiktok with or with out a watermarker.
+                  I mostly just wrote it because the usual app I used to download Tiktok Videos on my 
+                  phone had a ton of annoying fullscreen ads, so thought it might be nice to have an 
+                  opensource app that doesn't have any ads. 
+                  It's built with React Native and Typescript.
+                </p>
+                <span class="leading-xl">See the code on github: <a href="https://github.com/laine-hallot/tiktok-curl"=>https://github.com/laine-hallot/tiktok-curl</a></span>
+                @!component('image-gallery.edge', {images: [
+                  "assets/Screenshot_1686260557.png",
+                  "assets/full-download.gif",
+                ]})
+              @end
+        
+            @end       
           </div>
         </div>
         <div class="h-32"></div>
