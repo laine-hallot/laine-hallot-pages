@@ -9,6 +9,9 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="./styles.css" rel="stylesheet" />
     <script src="./script.js"></script>
+    @if(NODE_ENV === 'development')
+      <script src="./update-watcher-client.js"></script>
+    @end
     <title>Laine Hallot - Site</title>
   </head>
   <body class="font-mono dark:text-slate-50">

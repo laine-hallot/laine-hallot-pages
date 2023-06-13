@@ -3,17 +3,22 @@
   "version": "1.0.0",
   "description": "personal gh page",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "postcss -o styles.css src/styles/*.css",
-    "build:watch:css": "postcss --watch -o styles.css src/styles/*.css",
-    "dev": "./watch.sh views/ build-html.js"
+    "build": "NODE_ENV=production  node -e 'import(`./build.js`).then( builder => builder.run() )'",
+    "build:css": "npx postcss -o _site/styles.css src/styles/*.css",
+    "build:watch:css": "postcss --watch -o _site/styles.css src/styles/*.css",
+    "dev": "./watch.sh views/ build.js",
+    "serve": "node ./dev-server.js"
   },
   "author": "Laine Hallot",
   "license": "ISC",
   "dependencies": {
     "edge.js": "^5.5.1",
-    "postcss-cli": "^10.1.0"
+    "express": "^4.18.2",
+    "postcss-cli": "^10.1.0",
+    "ws": "^8.13.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
