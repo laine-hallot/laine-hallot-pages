@@ -91,6 +91,7 @@
             <h2 class="text-4xl mb-8">My work experience</h2>
           </div>
           <div class="flex flex-col gap-10">
+            
             @!component('job',{
               title: "Software Developer II",
               duration: "September 2021 - April 2023",
@@ -142,7 +143,8 @@
 
           </div>
         </div>
-        <div class="projects">
+        <div class="mx-auto w-full border-b border-slate-950 dark:border-slate-50 mt-10 border-dashed"></div>
+        <div id="projects" class="mt-1">
           <div>
             <h2 class="text-4xl mb-8">Stuff I've worked on</h2>
           </div>
@@ -157,7 +159,7 @@
                   opensource app that doesn't have any ads. 
                   It's built with React Native and Typescript.
                 </p>
-                <span class="leading-xl">See the code on github: <a href="https://github.com/laine-hallot/tiktok-curl"=>https://github.com/laine-hallot/tiktok-curl</a></span>
+                <span class="leading-xl">See the code on github: <a class="underline decoration-dashed" href="https://github.com/laine-hallot/tiktok-curl"=>https://github.com/laine-hallot/tiktok-curl</a></span>
                 @!component('image-gallery.edge', {images: [
                   "assets/Screenshot_1686260557.png",
                   "assets/full-download.gif",
