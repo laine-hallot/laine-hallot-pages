@@ -35,15 +35,13 @@ const buildCss = () => {
 
 const buildAssets = async () => {
   console.log('Copying assets');
-  await fs.promises.cp(
-    resolve('./assets'),
-    resolve('./_site/assets'),
-    { recursive: true },
-  ).catch((err) => {
-    if (err !== null) {
-      console.error(err);
-    }
-  });
+  await fs.promises
+    .cp(resolve('./assets'), resolve('./_site/assets'), { recursive: true })
+    .catch((err) => {
+      if (err !== null) {
+        console.error(err);
+      }
+    });
   console.log('Done');
 };
 

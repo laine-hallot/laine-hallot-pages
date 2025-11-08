@@ -4,7 +4,7 @@ const exampleSocket = new WebSocket(
 
 exampleSocket.onmessage = (event) => {
   console.log(event.data);
-  if(event.data === 'NEEDS_REFRESH') {
+  if (event.data === 'NEEDS_REFRESH') {
     location.reload();
   }
 };

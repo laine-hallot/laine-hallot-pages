@@ -5,16 +5,22 @@ import fs from 'fs';
 import WebSocket, { WebSocketServer } from 'ws';
 
 import { startFileWatcher } from './util/file-watcher.js';
-import { buildHtml, buildCss, buildAssets, buildJS } from './util/build-tools.js';
+import {
+  buildHtml,
+  buildCss,
+  buildAssets,
+  buildJS,
+} from './util/build-tools.js';
 import { run as runInitialBuild } from './build.js';
-
 
 let app = express();
 const port = 3000;
 
 console.log('Adding Dev Webhooks');
 fs.promises
-  .cp('./util/update-watcher-client.js', './_site/update-watcher-client.js', { force: true })
+  .cp('./util/update-watcher-client.js', './_site/update-watcher-client.js', {
+    force: true,
+  })
   .then(() => {
     /*no op*/
   });
@@ -36,7 +42,7 @@ wsServer.on('connection', (ws) => {
     console.log('message received from client');
     console.log(String(data));
     wsServer.clients.forEach((client) => {
-      console.log(client.url)
+      console.log(client.url);
       if (client !== ws && client.readyState === WebSocket.OPEN) {
         console.log('Sending message to client');
         client.send(data, { binary: isBinary });
@@ -60,21 +66,20 @@ const createExpressServer = () => {
   return server;
 };
 
-
 const sendRefreshNotification = () => {
   wsServer.clients.forEach((client) => {
     client.send('NEEDS_REFRESH');
   });
-}
+};
 
 const handleFileUpdate = async (matchedFileType) => {
-  switch(matchedFileType){
-    case 'js': 
+  switch (matchedFileType) {
+    case 'js':
       console.log('JS change');
       await buildJS();
       sendRefreshNotification();
       break;
-    case 'html': 
+    case 'html':
       console.log('HTML change');
       await buildHtml();
       sendRefreshNotification();

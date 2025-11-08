@@ -1,4 +1,9 @@
-import { buildHtml, buildCss, buildAssets, buildJS } from './util/build-tools.js';
+import {
+  buildHtml,
+  buildCss,
+  buildAssets,
+  buildJS,
+} from './util/build-tools.js';
 
 export const run = async () => {
   await buildAssets();
