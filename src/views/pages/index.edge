@@ -1,69 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="./styles.css" rel="stylesheet" />
-    <script src="./script.js"></script>
-    @if(NODE_ENV === 'development')
-      <script src="./update-watcher-client.js"></script>
-    @end
-    <title>Laine Hallot - Site</title>
-  </head>
-  <body class="font-mono dark:text-neutral-50">
-    <div
-      class="w-screen h-screen overflow-scroll bg-neutral-50 dark:bg-neutral-950"
-      x-data="page"
-      x-on:scroll="handleScroll">
-      <div class="w-full h-full flex flex-col justify-center" x-ref="header">
-        <div
-        class="p-6 mx-auto flex"
-        x-bind:style="{opacity: percentageOfHeaderRemaining, transform:headerTransformString}"
-        >
-          <img
-            src="https://avatars.githubusercontent.com/u/16855412?v=4"
-            class="rounded-full h-56 w-56 hidden md:block" />
-          <div
-            class="h-full p-4 flex flex-col items-center md:w-96 justify-center relative">
-            <div class="flex absolute md:top-4 md:right-4 -bottom-6 md:bottom-auto gap-2">
-              <a href="https://github.com/laine-hallot">
-                <img atl="my github" class="icon gh-icon" />
-              </a>
-              <a href="https://www.linkedin.com/in/laine-h-358717130/">
-                <img atl="my linkedin" class="icon li-icon" />
-              </a>
-            </div>
-            <h1 class="text-2xl font-mono dark:text-neutral-50">Laine Hallot</h1>
-            <span>full stack developer</span>
-            <a class="underline decoration-dashed text-lg" download="" href="./assets/Laine Hallot Resume.pdf"
-              >My resume</a
-            >
-          </div>
-        </div>
-        <div class="w-96 p-6 mx-auto text-center" x-bind:style="{opacity: percentageOfHeaderRemaining}">
-          <a
-            class="animate animate-bounce underline decoration-dashed"
-            href="#employment"
-            x-on:click="scrollToFirst"
-            >More ↓
-          </a>
-          
-        </div>
-      </div>
-      <div 
-      class="absolute p-6 mx-auto hidden md:flex top-0 items-center"
-      x-bind:style="{opacity: percentageOfHeaderNotOnScreenString, transform:headerTransformString}"
+@component('templates::main-layout', { title: "Laine Hallot - Site" })
+  @slot('main')
+    <div class="w-full h-full flex flex-col justify-center" x-ref="header">
+      <div
+      class="p-6 mx-auto flex"
+      x-bind:style="{opacity: percentageOfHeaderRemaining, transform:headerTransformString}"
       >
         <img
           src="https://avatars.githubusercontent.com/u/16855412?v=4"
-          class="rounded-full h-24 w-24 hidden md:block"  />
+          class="rounded-full h-56 w-56 hidden md:block" />
         <div
-          class="h-full p-4 flex flex-col items-start justify-center relative">
-          <div class="flex absolute bottom-4 right-4 gap-2">
+          class="h-full p-4 flex flex-col items-center md:w-96 justify-center relative">
+          <div class="flex absolute md:top-4 md:right-4 -bottom-6 md:bottom-auto gap-2">
             <a href="https://github.com/laine-hallot">
               <img atl="my github" class="icon gh-icon" />
             </a>
@@ -71,111 +18,143 @@
               <img atl="my linkedin" class="icon li-icon" />
             </a>
           </div>
-          <h1 class="text-lg font-mono dark:text-neutral-50">Laine Hallot</h1>
+          <h1 class="text-2xl font-mono dark:text-neutral-50">Laine Hallot</h1>
           <span>full stack developer</span>
-          <a class="underline decoration-dashed text-lg" download="" href="./assets/Laine Hallot Resume.pdf">
-            My resume
-          </a>
-          <a class="underline decoration-dashed text-lg" href="#employment">
-            Experience
-          </a>
-          <a class="underline decoration-dashed text-lg" href="#projects">
-            Projects
-          </a>
+          <a class="underline decoration-dashed text-lg" download="" href="./assets/Laine Hallot Resume.pdf"
+            >My resume</a
+          >
         </div>
       </div>
-      <div
-        class="w-full p-12 md:pl-96 md:pr-48 pt-16 flex flex-col gap-12 min-h-screen">
-        <div id="employment">
-          <div>
-            <h2 class="text-4xl mb-8">My work experience</h2>
-          </div>
-          <div class="flex flex-col gap-10">
-            
-            @!component('job',{
-              title: "Senior Frontend Engineer",
-              duration: "July 2023 - August 2025",
-              company: "KorTerra",
-              bulletPoints: [
-                "Worked on cross platform React application using Capacitor for iOS/Android and Electron for Windows",
-                "Responsible for code review and mentoring other developers.",
-                "Managed architecture design for new features, creating roadmaps and breaking out tasks to allow developers to complete the work in parallel.",
-                "Lead development on new React applications, steering feature implementations to make sure users were satisfied, and working directly with upper management to make sure business needs were met.",
-                "Handled geoJSON data from ArcGIS to enable GIS enhanced features and create in-app interactive maps.",
-                "Wrote unit tests using Jest to ensure new work would not introduce regressions.",
-                "Oversaw code base modernization project, upgrading our tech stack across multiple major releases.",
-                "Created fully type safe TypeScript packages who's functionality can be verified at compile time instead of waiting for bugs to reveal themselves at runtime.",
-                "Improved the team's code quality and sped up PR reviews by introducing new code standards with Eslint."
-              ]
-            })
-            @!component('job',{
-              title: "Software Developer II",
-              duration: "September 2021 - April 2023",
-              company: "Branding Brand",
-              bulletPoints: [
-                "Used React to create SaaS CMS software.",
-                "Worked on Branding Brand's Flagship framework for Mobile apps in React Native.",
-                "Developed ecommerce mobile apps using React Native.",
-                "Worked closely with the design team to translate figma documents into actual UIs.",
-                "Developed SPAs with React.",
-                "Supported other teams in the company to help deliver apps for large retailers by fulfilling feature requests and helping them integrate their app code with our CMS software and its proprietary libraries.",
-                "I did frontend development on marketing segmentation software that delivered content to millions of unique users per day"
-              ]
-            })
-            @!component('job',{
-              title: "Fullstack Web Developer",
-              duration: "January 2020 to June 2021",
-              company: "Simple Solutions FS",
-              bulletPoints: [
-                "Worked on a variety of projects and had responsibilities in all aspects of the software stack.",
-                "Developed plugins and themes for CMSs like Wordpress andMagento",
-                "Did backend programming with Laravel and NodeJs frameworks like AdonisJS.",
-                "I did Frontend work with React, jQuery+Bootstrap, orAlpineJS+Tailwind.",
-                "I took over development for old codebases, updating their code, fixing bugs, and adding new features.",
-                "I did mobile app development with native JS frameworks likeIonic and React.",
-                "Responsible for setting up production environments and deploying apps with Docker."
-              ]
-            })
-            @!component('job',{
-              title: "Frontend Web Development Intern",
-              duration: "July 2017 - August 2017",
-              company: "Valtech NYC",
-              bulletPoints: [
-                "Did frontend development for an in-store customer engagement tracker using D3 and Semantic UI.",
-                "Worked on a messaging app for Android and iPhone using React Native and Firebase.",
-                "Implemented UI designs from wireframes and .psd mock ups."
-              ]
-            })
-
-          </div>
-        </div>
-        <div class="mx-auto w-full border-b border-slate-950 dark:border-slate-50 mt-10 border-dashed"></div>
-        <div id="projects" class="mt-1">
-          <div>
-            <h2 class="text-4xl mb-8">Stuff I've worked on</h2>
-          </div>
-          <div class="flex flex-col gap-10">
-            @component('article')
-              @slot('body')
-                <p>
-                  TikTok Curl (named after the unix utility curl) is an Ios and Android app 
-                  that lets users download a video from tiktok with or with out a watermarker.
-                  I mostly just wrote it because the usual app I used to download Tiktok Videos on my 
-                  phone had a ton of annoying fullscreen ads, so thought it might be nice to have an 
-                  opensource app that doesn't have any ads. 
-                  It's built with React Native and Typescript.
-                </p>
-                <span class="leading-xl">See the code on github: <a class="underline decoration-dashed" href="https://github.com/laine-hallot/tiktok-curl"=>https://github.com/laine-hallot/tiktok-curl</a></span>
-                @!component('image-gallery.edge', {images: [
-                  "assets/Screenshot_1686260557.png",
-                  "assets/full-download.gif",
-                ]})
-              @end
-            @end
-          </div>
-        </div>
-        <div class="h-32"></div>
+      <div class="w-96 p-6 mx-auto text-center" x-bind:style="{opacity: percentageOfHeaderRemaining}">
+        <a
+          class="animate animate-bounce underline decoration-dashed"
+          href="#employment"
+          x-on:click="scrollToFirst"
+          >More ↓
+        </a>
       </div>
     </div>
-  </body>
-</html>
+    <div 
+    class="absolute p-6 mx-auto hidden md:flex top-0 items-center"
+    x-bind:style="{opacity: percentageOfHeaderNotOnScreenString, transform:headerTransformString}"
+    >
+      <img
+        src="https://avatars.githubusercontent.com/u/16855412?v=4"
+        class="rounded-full h-24 w-24 hidden md:block"  />
+      <div
+        class="h-full p-4 flex flex-col items-start justify-center relative">
+        <div class="flex absolute bottom-4 right-4 gap-2">
+          <a href="https://github.com/laine-hallot">
+            <img atl="my github" class="icon gh-icon" />
+          </a>
+          <a href="https://www.linkedin.com/in/laine-h-358717130/">
+            <img atl="my linkedin" class="icon li-icon" />
+          </a>
+        </div>
+        <h1 class="text-lg font-mono dark:text-neutral-50">Laine Hallot</h1>
+        <span>full stack developer</span>
+        <a class="underline decoration-dashed text-lg" download="" href="./assets/Laine Hallot Resume.pdf">
+          My resume
+        </a>
+        <a class="underline decoration-dashed text-lg" href="#employment">
+          Experience
+        </a>
+        <a class="underline decoration-dashed text-lg" href="#projects">
+          Projects
+        </a>
+        <a class="underline decoration-dashed text-lg" href="./blog">Blog</a>
+      </div>
+    </div>
+    <div
+      class="w-full p-12 md:pl-96 md:pr-48 pt-16 flex flex-col gap-12 min-h-screen">
+      <div id="employment">
+        <div>
+          <h2 class="text-4xl mb-8">My work experience</h2>
+        </div>
+        <div class="flex flex-col gap-10">
+          
+          @!component('components::job',{
+            title: "Senior Frontend Engineer",
+            duration: "July 2023 - August 2025",
+            company: "KorTerra",
+            bulletPoints: [
+              "Worked on cross platform React application using Capacitor for iOS/Android and Electron for Windows",
+              "Responsible for code review and mentoring other developers.",
+              "Managed architecture design for new features, creating roadmaps and breaking out tasks to allow developers to complete the work in parallel.",
+              "Lead development on new React applications, steering feature implementations to make sure users were satisfied, and working directly with upper management to make sure business needs were met.",
+              "Handled geoJSON data from ArcGIS to enable GIS enhanced features and create in-app interactive maps.",
+              "Wrote unit tests using Jest to ensure new work would not introduce regressions.",
+              "Oversaw code base modernization project, upgrading our tech stack across multiple major releases.",
+              "Created fully type safe TypeScript packages who's functionality can be verified at compile time instead of waiting for bugs to reveal themselves at runtime.",
+              "Improved the team's code quality and sped up PR reviews by introducing new code standards with Eslint."
+            ]
+          })
+          @!component('components::job',{
+            title: "Software Developer II",
+            duration: "September 2021 - April 2023",
+            company: "Branding Brand",
+            bulletPoints: [
+              "Used React to create SaaS CMS software.",
+              "Worked on Branding Brand's Flagship framework for Mobile apps in React Native.",
+              "Developed ecommerce mobile apps using React Native.",
+              "Worked closely with the design team to translate figma documents into actual UIs.",
+              "Developed SPAs with React.",
+              "Supported other teams in the company to help deliver apps for large retailers by fulfilling feature requests and helping them integrate their app code with our CMS software and its proprietary libraries.",
+              "I did frontend development on marketing segmentation software that delivered content to millions of unique users per day"
+            ]
+          })
+          @!component('components::job',{
+            title: "Fullstack Web Developer",
+            duration: "January 2020 to June 2021",
+            company: "Simple Solutions FS",
+            bulletPoints: [
+              "Worked on a variety of projects and had responsibilities in all aspects of the software stack.",
+              "Developed plugins and themes for CMSs like Wordpress andMagento",
+              "Did backend programming with Laravel and NodeJs frameworks like AdonisJS.",
+              "I did Frontend work with React, jQuery+Bootstrap, orAlpineJS+Tailwind.",
+              "I took over development for old codebases, updating their code, fixing bugs, and adding new features.",
+              "I did mobile app development with native JS frameworks likeIonic and React.",
+              "Responsible for setting up production environments and deploying apps with Docker."
+            ]
+          })
+          @!component('components::job',{
+            title: "Frontend Web Development Intern",
+            duration: "July 2017 - August 2017",
+            company: "Valtech NYC",
+            bulletPoints: [
+              "Did frontend development for an in-store customer engagement tracker using D3 and Semantic UI.",
+              "Worked on a messaging app for Android and iPhone using React Native and Firebase.",
+              "Implemented UI designs from wireframes and .psd mock ups."
+            ]
+          })
+
+        </div>
+      </div>
+      <div class="mx-auto w-full border-b border-slate-950 dark:border-slate-50 mt-10 border-dashed"></div>
+      <div id="projects" class="mt-1">
+        <div>
+          <h2 class="text-4xl mb-8">Stuff I've worked on</h2>
+        </div>
+        <div class="flex flex-col gap-10">
+          @component('components::article')
+            @slot('body')
+              <p>
+                TikTok Curl (named after the unix utility curl) is an Ios and Android app 
+                that lets users download a video from tiktok with or with out a watermarker.
+                I mostly just wrote it because the usual app I used to download Tiktok Videos on my 
+                phone had a ton of annoying fullscreen ads, so thought it might be nice to have an 
+                opensource app that doesn't have any ads. 
+                It's built with React Native and Typescript.
+              </p>
+              <span class="leading-xl">See the code on github: <a class="underline decoration-dashed" href="https://github.com/laine-hallot/tiktok-curl"=>https://github.com/laine-hallot/tiktok-curl</a></span>
+              @!component('components::image-gallery.edge', {images: [
+                "assets/Screenshot_1686260557.png",
+                "assets/full-download.gif",
+              ]})
+            @end
+          @end
+        </div>
+      </div>
+    </div>
+  @endslot
+@end
