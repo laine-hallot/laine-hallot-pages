@@ -1,6 +1,7 @@
 import fs, { readdirSync } from 'fs';
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import { Edge } from 'edge.js';
+import { installEdgeGlobals } from '../install-edge-globals.ts';
 
 export const buildHomePage = async () => {
   console.log('Home page');
@@ -9,7 +10,7 @@ export const buildHomePage = async () => {
   edge.mount('pages', resolve('src/views/pages'));
   edge.mount('templates', resolve('src/views/templates'));
 
-  edge.global('NODE_ENV', process.env.NODE_ENV || 'development');
+  installEdgeGlobals(edge);
 
   if ('pages' in edge.loader.mounted) {
     const files = readdirSync(edge.loader.mounted.pages, {

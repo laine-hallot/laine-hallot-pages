@@ -1,8 +1,9 @@
 import fs, { readdirSync } from 'fs';
-import path from 'node:path';
+import path, { relative } from 'node:path';
 import { resolve } from 'path';
 import { Edge } from 'edge.js';
 import { edgeMarkdown, Markdown } from 'edge-markdown';
+import { installEdgeGlobals } from '../install-edge-globals.ts';
 
 type MarkdownOptions = Exclude<
   Parameters<Markdown['parse']>[number],
@@ -61,7 +62,7 @@ export const buildBlogPages = async () => {
   edgeMd.mount('components', resolve('src/views/components'));
   edgeMd.mount('templates', resolve('src/views/templates'));
 
-  edgeMd.global('NODE_ENV', process.env.NODE_ENV || 'development');
+  installEdgeGlobals(edgeMd);
 
   const { fileInfo, extractMarkdownMetaData } = useMarkdownMetaData();
 
