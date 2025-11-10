@@ -3,10 +3,11 @@ import { execSync } from 'child_process';
 import { resolve } from 'path';
 
 import { buildHomePage } from './html/home.ts';
+import { buildBlogPages } from './html/blog.ts';
 
 const buildHtml = async () => {
   console.log('Building Edge Templates...');
-  await buildHomePage();
+  await Promise.all([buildHomePage(), buildBlogPages()]);
 
   console.log('Done');
 };

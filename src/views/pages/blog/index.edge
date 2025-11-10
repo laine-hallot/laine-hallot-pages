@@ -1,0 +1,30 @@
+@component('templates::main-layout', { title: "Blog Posts" })
+  @slot('main')
+    <div>
+      <div class="flex gap-4 px-4 py-2 h-12"><a href="/">Home</a></div>
+      <div class="flex flex-col w-full items-center">
+        <div class="w-full max-w-2xl">
+            <h1 class="text-4xl font-extrabold leading-none mb-8">Blog Posts</h1>
+            <ul class="flex flex-col gap-12">
+              @each(article in articles)
+              <li class="flex flex-col">
+                <a href="{{ article.path }}">
+                  @if(article.image)
+                    <div class="h-64 bg-blue-600/10 w-full">
+                      <img src="{{ article.image.src }}" class="h-full mx-auto" alt={{ article.image.alt }}/>
+                    </div>
+                  @end
+
+                  <h2 class="text-2xl leading-snug mt-4">{{ article.title }} </h2>
+                </a>
+                </li>
+              @else
+                <p class="bg-black/5 text-black/60 dark:bg-white/5 dark:text-white/60 text-center py-1"> No posts </p>
+              @end
+
+            </ul>
+        </div>
+      </div>
+    </div>
+  @endslot
+@end

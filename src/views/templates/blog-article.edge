@@ -1,0 +1,19 @@
+@component('templates::main-layout', { title })
+  @slot('main')
+    <div class="flex gap-4 px-4 py-2 h-12"><a href="/">Home</a></div>
+    <div class="relative">
+      <div class="flex flex-col w-full items-center">
+        <div class="prose dark:prose-invert">
+          {{{ await $slots.article() }}}
+        </div>
+      </div>
+      <div class="absolute right-0 top-0 mt-20">
+        <div class="sticky">
+          <div class="border-solid border-l-2 border-white/10 pl-4 pr-8">
+            {{{ doc.toc }}}
+          </div>
+        </div>
+      </div>
+    </div>
+  @endslot
+@end

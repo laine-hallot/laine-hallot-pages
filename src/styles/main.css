@@ -1,7 +1,12 @@
 @import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
 :root {
   --icon-link: '';
+}
+
+a {
+  @apply underline decoration-dashed;
 }
 
 .important-block {

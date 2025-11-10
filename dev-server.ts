@@ -1,6 +1,5 @@
 import type { Server } from 'node:http';
 import express from 'express';
-import { join } from 'path';
 import fs from 'fs';
 
 import WebSocket, { WebSocketServer } from 'ws';

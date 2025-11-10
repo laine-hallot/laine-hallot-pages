@@ -1,0 +1,27 @@
+diff --git a/node_modules/edge-markdown/build/index.js b/node_modules/edge-markdown/build/index.js
+index 7e92635..e45223a 100644
+--- a/node_modules/edge-markdown/build/index.js
++++ b/node_modules/edge-markdown/build/index.js
+@@ -538,7 +538,7 @@ var Cache = class extends Map {
+ };
+ 
+ // src/plugin.ts
+-var edgeMarkdown = (edge, _, options) => {
++var edgeMarkdown = (options) => (edge, _, _2) => {
+   const globalCache = new Cache();
+   const components = discoverMarkdownComponents(edge, options.prefix ?? "markdown");
+   edge.onRender((edgeRenderer) => {
+diff --git a/node_modules/edge-markdown/build/src/plugin.d.ts b/node_modules/edge-markdown/build/src/plugin.d.ts
+index 7a920a6..ebe5ab9 100644
+--- a/node_modules/edge-markdown/build/src/plugin.d.ts
++++ b/node_modules/edge-markdown/build/src/plugin.d.ts
+@@ -18,6 +18,8 @@ import { type RendererOptions, type ParserOptions } from './types.ts';
+  * @param firstRun - Whether this is the first time the plugin is being registered
+  * @param options - Plugin configuration options including renderer/parser settings and prefix
+  */
+-export declare const edgeMarkdown: PluginFn<Partial<RendererOptions & ParserOptions> & {
++export declare const edgeMarkdown: (options: Partial<RendererOptions & ParserOptions>  & {
++    prefix?: string;
++}) => PluginFn<Partial<RendererOptions & ParserOptions> & {
+     prefix?: string;
+ }>;
