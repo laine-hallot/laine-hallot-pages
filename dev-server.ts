@@ -1,17 +1,18 @@
+import type { Server } from 'node:http';
 import express from 'express';
 import { join } from 'path';
 import fs from 'fs';
 
 import WebSocket, { WebSocketServer } from 'ws';
 
-import { startFileWatcher } from './util/file-watcher.js';
+import { startFileWatcher } from './util/file-watcher.ts';
 import {
   buildHtml,
   buildCss,
   buildAssets,
   buildJS,
-} from './util/build-tools.js';
-import { run as runInitialBuild } from './build.js';
+} from './util/build-tools.ts';
+import { run as runInitialBuild } from './build.ts';
 
 let app = express();
 const port = 3000;
@@ -51,7 +52,7 @@ wsServer.on('connection', (ws) => {
   });
 });
 
-const wrapWithWebSocket = (server) => {
+const wrapWithWebSocket = (server: Server) => {
   server.on('upgrade', (request, socket, head) => {
     wsServer.handleUpgrade(request, socket, head, (ws) => {
       wsServer.emit('connection', ws, request);
@@ -72,7 +73,7 @@ const sendRefreshNotification = () => {
   });
 };
 
-const handleFileUpdate = async (matchedFileType) => {
+const handleFileUpdate = async (matchedFileType: string) => {
   switch (matchedFileType) {
     case 'js':
       console.log('JS change');

@@ -3,7 +3,7 @@ import {
   buildCss,
   buildAssets,
   buildJS,
-} from './util/build-tools.js';
+} from './util/build-tools.ts';
 
 export const run = async () => {
   await buildAssets();

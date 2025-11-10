@@ -47,16 +47,9 @@ const buildAssets = async () => {
 
 const buildJS = async () => {
   console.log('Copying js files');
-  await fs.promises.cp(
-    resolve('./src/scripts/'),
-    resolve('./_site/'),
-    { recursive: true },
-    (err) => {
-      if (err !== null) {
-        console.error(err);
-      }
-    },
-  );
+  await fs.promises.cp(resolve('./src/scripts/'), resolve('./_site/'), {
+    recursive: true,
+  });
   console.log('Done');
 };
 

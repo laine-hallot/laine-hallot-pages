@@ -2,19 +2,20 @@
   "name": "laine-pages",
   "version": "1.0.0",
   "description": "personal gh page",
-  "main": "index.js",
+  "main": "index.ts",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "NODE_ENV=production  node -e 'import(`./build.js`).then( builder => builder.run() )'",
+    "build": "NODE_ENV=production node -e 'import(`./build.ts`).then( builder => builder.run() )'",
     "build:css": "npx postcss -o _site/styles.css src/styles/*.css",
     "build:watch:css": "postcss --watch -o _site/styles.css src/styles/*.css",
-    "dev": "./watch.sh src/views/ build.js",
-    "serve": "node ./dev-server.js"
+    "dev": "./watch.sh src/views/ build.ts",
+    "serve": "node ./dev-server.ts"
   },
   "author": "Laine Hallot",
   "license": "ISC",
   "dependencies": {
+    "edge-markdown": "^1.7.0",
     "edge.js": "^6.2.1",
     "express": "^4.21.2",
     "postcss-cli": "^11.0.1",
@@ -22,6 +23,9 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.15",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/express": "^5.0.5",
+    "@types/ws": "^8.18.1",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.0.15"
