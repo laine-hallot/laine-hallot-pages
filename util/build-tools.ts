@@ -1,25 +1,13 @@
-import { join } from 'path';
 import fs from 'fs';
 import { execSync } from 'child_process';
+import { resolve } from 'path';
 
-import { Edge } from 'edge.js';
-
-import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { buildHomePage } from './html/home.ts';
 
 const buildHtml = async () => {
   console.log('Building Edge Templates...');
+  await buildHomePage();
 
-  const edge = new Edge({ cache: false });
-  edge.mount(resolve('src/views'));
-
-  edge.global('NODE_ENV', process.env.NODE_ENV || 'development');
-
-  const html = await edge.render('index');
-  fs.writeFileSync(resolve('_site/index.html'), html);
   console.log('Done');
 };
 
