@@ -19,7 +19,9 @@
     "edge-markdown": "^1.7.0",
     "edge.js": "^6.2.1",
     "express": "^4.21.2",
+    "mdast-util-to-markdown": "^2.1.2",
     "postcss-cli": "^11.0.1",
+    "unist-util-visit": "^5.0.0",
     "ws": "^8.18.1"
   },
   "devDependencies": {

@@ -1,8 +1,12 @@
+import type { Image, Paragraph, Text } from 'mdast';
 import fs, { readdirSync } from 'fs';
-import path, { relative } from 'node:path';
+import path from 'node:path';
 import { resolve } from 'path';
 import { Edge } from 'edge.js';
 import { edgeMarkdown, Markdown } from 'edge-markdown';
+import { toMarkdown } from 'mdast-util-to-markdown';
+import { visit } from 'unist-util-visit';
+
 import { installEdgeGlobals } from '../install-edge-globals.ts';
 
 type MarkdownOptions = Exclude<
@@ -55,6 +59,11 @@ const useMarkdownMetaData = (): {
   };
 };
 
+const OBSIDIAN_LINK_REGEX = /\!\[\[(?<fileName>.*)]]/g;
+
+/** this is a predicate since specifiying the node type in the visitor was giving an error */
+const isTextNode = (node: any): node is Text => true;
+
 export const buildBlogPages = async () => {
   console.log('Blog pages');
   const edgeMd = new Edge({ cache: false });
@@ -71,6 +80,54 @@ export const buildBlogPages = async () => {
       prefix: 'markdown',
       highlight: true,
       hooks: [extractMarkdownMetaData],
+      allowHTML: true,
+      remarkPlugins: [
+        () => (tree) => {
+          visit(tree, 'text', (node: any) => {
+            if (isTextNode(node)) {
+              const matches = Array.from(
+                (node.value as String).matchAll(OBSIDIAN_LINK_REGEX),
+              );
+              const match = matches[0];
+              if (match !== undefined) {
+                const fileName = match.groups['fileName'];
+                // @ts-expect-error -- lazy
+                node.type = 'paragraph';
+                // @ts-expect-error -- lazy
+                node.children = [
+                  {
+                    type: 'text',
+                    value: node.value.slice(
+                      0,
+                      match.index > 2 ? match.index - 2 : match.index,
+                    ),
+                  },
+                  {
+                    type: 'image',
+                    url: path.join('/assets/', fileName),
+                  },
+                  {
+                    type: 'text',
+                    value: node.value.slice(match.index + fileName.length + 5),
+                  },
+                ];
+                delete node.value;
+              }
+            }
+          });
+        },
+      ],
+      rhypePlugins: [
+        () => (tree) => {
+          //console.log(tree.children);
+          visit(tree, 'element', (node) => {
+            if (node.tagName === 'img') {
+              node.properties.class = 'block';
+              console.log(node);
+            }
+          });
+        },
+      ],
     }),
   );
 
@@ -106,7 +163,7 @@ export const buildBlogPages = async () => {
             @end
           `,
           });
-
+          edgeMd.tags;
           const html = await edgeMd.render(
             `pages::blog/articles/${nameNoExtension}`,
           );
