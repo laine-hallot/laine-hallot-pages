@@ -163,7 +163,7 @@ export const buildBlogPages = async () => {
             @end
           `,
           });
-          edgeMd.tags;
+
           const html = await edgeMd.render(
             `pages::blog/articles/${nameNoExtension}`,
           );
