@@ -1,4 +1,4 @@
-import type { Image, Paragraph, Text } from 'mdast';
+import type { Image, Paragraph, Parent, Text } from 'mdast';
 import fs, { readdirSync } from 'fs';
 import path from 'node:path';
 import { resolve } from 'path';
@@ -83,7 +83,7 @@ export const buildBlogPages = async () => {
       allowHTML: true,
       remarkPlugins: [
         () => (tree) => {
-          visit(tree, 'text', (node: any) => {
+          visit(tree, 'text', (node: any, index, parent: Parent) => {
             if (isTextNode(node)) {
               const matches = Array.from(
                 (node.value as String).matchAll(OBSIDIAN_LINK_REGEX),
@@ -91,16 +91,19 @@ export const buildBlogPages = async () => {
               const match = matches[0];
               if (match !== undefined) {
                 const fileName = match.groups['fileName'];
-                // @ts-expect-error -- lazy
-                node.type = 'paragraph';
-                // @ts-expect-error -- lazy
-                node.children = [
+                const leftText = node.value.slice(
+                  0,
+                  match.index > 2 ? match.index - 2 : match.index,
+                );
+                const rightText = node.value.slice(
+                  match.index + fileName.length + 5,
+                );
+                parent.children.splice(
+                  index,
+                  1,
                   {
                     type: 'text',
-                    value: node.value.slice(
-                      0,
-                      match.index > 2 ? match.index - 2 : match.index,
-                    ),
+                    value: leftText,
                   },
                   {
                     type: 'image',
@@ -108,10 +111,10 @@ export const buildBlogPages = async () => {
                   },
                   {
                     type: 'text',
-                    value: node.value.slice(match.index + fileName.length + 5),
+                    value: rightText,
                   },
-                ];
-                delete node.value;
+                );
+                return 'skip';
               }
             }
           });
@@ -123,7 +126,6 @@ export const buildBlogPages = async () => {
           visit(tree, 'element', (node) => {
             if (node.tagName === 'img') {
               node.properties.class = 'block';
-              console.log(node);
             }
           });
         },
